@@ -1,0 +1,6 @@
+name = "my_mod"
+
+[oxidizer]
+# The library goes in bin/: my_mod.dll on Windows, libmy_mod.so on Linux, libmy_mod.dylib on macOS.
+# (Not next to this file: StarMap would try to load mods/my_mod/my_mod.dll as a C# mod.)
+dll = "bin/my_mod"

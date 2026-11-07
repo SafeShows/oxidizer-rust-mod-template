@@ -1,0 +1,31 @@
+# A starting point for listing this mod in the KSA content index (https://github.com/KSAModding/content-index).
+# Copy it to listings/<your mod id>.toml in a fork of that repository, fill it in, and open a pull request.
+# Publish a release first: the index checks your latest release when you open the pull request.
+spec_version = 1
+id = "my_mod"                      # the folder name: the package name in Cargo.toml
+type = "mod"
+name = "My mod"
+authors = ["your name"]
+abstract = "One or two sentences about what the mod does."
+license = "MIT"
+tags = ["user-interface"]          # see tags.toml in the content index
+
+[releases]
+github = "your-name/your-repo"
+
+[links]
+forums = "https://forums.ahwoo.com/threads/your-thread.123/"   # required: a thread for your mod
+repository = "https://github.com/your-name/your-repo"
+
+[compatibility]
+game_min = "2026.10.25.5707"
+
+# Oxidizer mods run as StarMap mods that need Oxidizer.StarMap, so mod managers install both for you.
+# They also run with standalone Oxidizer.
+[loader]
+id = "StarMap"
+
+[[dependencies]]
+id = "Oxidizer.StarMap"
+kind = "required"
+min = "0.5.0"

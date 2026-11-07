@@ -1,0 +1,11 @@
+[package]
+name = "my_mod" # also the mod's id (its folder in mods/): rename together with mod/mod.toml and the release workflow
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+oxidizer_api = "0.3"
