@@ -24,6 +24,7 @@ game_min = "2026.10.25.5707"
 # They also run with standalone Oxidizer.
 [loader]
 id = "StarMap"
+min = "0.4.6"                      # the StarMap version Oxidizer.StarMap needs; the index requires a min
 
 [[dependencies]]
 id = "Oxidizer.StarMap"
