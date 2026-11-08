@@ -1,5 +1,5 @@
 # Builds the mod and copies it into the game's mods folder (Windows). Usage: ./install.ps1 [mods folder]
-# Quit the game first: Windows keeps the loaded library locked.
+# With Oxidizer 0.10+ the game can keep running: the mod reloads within a second. (Older Oxidizer locks the library: quit the game first.)
 param([string]$Mods = (Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'My Games\Kitten Space Agency\mods'))
 $ErrorActionPreference = 'Stop'
 $id = (Select-String -Path Cargo.toml -Pattern '^name = "([^"]+)"').Matches[0].Groups[1].Value

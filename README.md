@@ -12,7 +12,8 @@ menu, toggles with **F8**, and hooks a game method.
    [Oxidizer's install steps](https://github.com/SafeShows/Oxidizer#install). Install
    [Rust](https://rustup.rs) too.
 2. Click **Use this template** on GitHub to make your own repository from this one, and clone it.
-3. Build and install the mod into the game's mods folder (quit the game first on Windows):
+3. Build and install the mod into the game's mods folder. With Oxidizer 0.10 or later the game can keep running: the mod
+   reloads within a second of installing (older versions lock the library on Windows, so quit the game first):
    ```sh
    ./install.ps1    # Windows
    ./install.sh     # Linux, macOS
