@@ -44,6 +44,7 @@ jobs:
           version="${GITHUB_REF_NAME#v}"
           mkdir -p "dist/$id/bin"
           cp -R mod/. "dist/$id/"
+          [[ "$GITHUB_REF" == refs/tags/* ]] && sed -i "s/^version = \".*\"/version = \"$version\"/" "dist/$id/mod.toml"   # the mod's version is the tag's
           cp libs/* "dist/$id/bin/"
           cp LICENSE "dist/$id/"
           python3 scripts/notices.py "dist/$id/THIRD-PARTY-NOTICES.txt" # licenses of the crates in the library

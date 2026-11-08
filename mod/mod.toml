@@ -4,3 +4,11 @@ name = "my_mod"
 # The library goes in bin/: my_mod.dll on Windows, libmy_mod.so on Linux, libmy_mod.dylib on macOS.
 # (Not next to this file: StarMap would try to load mods/my_mod/my_mod.dll as a C# mod.)
 dll = "bin/my_mod"
+# This mod's version, for mods that depend on it. The release workflow sets it from the git tag.
+version = "0.1.0"
+# Dependencies on other mods (Oxidizer 0.8+): this mod starts after them, and doesn't start if a required one is
+# missing or outside its version bounds. See https://safeshows.github.io/Oxidizer/mod-folders/
+# dependencies = [
+#     { id = "some_mod", min = "1.0", max = "1.9" },
+#     { id = "other_mod", optional = true },
+# ]

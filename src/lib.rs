@@ -24,6 +24,12 @@ impl Mod for MyMod {
         MyMod { visible: true, clicks: 0 }
     }
 
+    /// Once the game has loaded its content and mods (init runs earlier, before the game's Main). Set up what
+    /// needs the game's data here; there is no flight yet, so the controlled vehicle comes later.
+    fn loaded(&mut self) {
+        log("my_mod: the game has loaded");
+    }
+
     /// Every frame. key_pressed is true only on the frame the key went down.
     fn frame(&mut self, _time: f64, _dt: f64) {
         if key_pressed("F8") {

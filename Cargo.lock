@@ -27,9 +27,9 @@ dependencies = [
 
 [[package]]
 name = "oxidizer_api"
-version = "0.3.0"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8bb76a4303f3db7a5a0354f6ce0e6aae56bd59f9f8dd67a2ae23bbf144a54d77"
+checksum = "59e7245d262a04073ad13fe41614fbb69712e23362ed4534c29d40532732fbf7"
 dependencies = [
  "libloading",
 ]
