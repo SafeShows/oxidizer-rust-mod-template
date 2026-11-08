@@ -29,4 +29,4 @@ min = "0.5.3"                      # the StarMap version that runs the current g
 [[dependencies]]
 id = "Oxidizer.StarMap"
 kind = "required"
-min = "0.8.0"                      # oxidizer_api 0.5 needs Oxidizer 0.8
+min = "0.9.0"                      # oxidizer_api 0.6 needs Oxidizer 0.9

@@ -3,11 +3,25 @@
 //! This uses the by-name API (`Obj::static_get("KSA.Program, KSA", ...)`). For typed access with autocomplete,
 //! run `oxidizer --bindgen src/ksa.rs` and use the generated types instead (see README).
 
-use oxidizer_api::{Mod, Obj, imgui, key_pressed, log};
+use oxidizer_api::serde::{Deserialize, Serialize};
+use oxidizer_api::{Event, Mod, Obj, Subscription, imgui, key_pressed, log};
+
+/// An event other mods (Rust or Rhai) can subscribe to. Topics start with your mod's id: only my_mod can publish
+/// on `my_mod.*`. Rhai mods get it as a map: `#{ count: 3 }`.
+#[derive(Serialize, Deserialize)]
+#[serde(crate = "oxidizer_api::serde")]
+struct Clicked {
+    count: u32,
+}
+impl Event for Clicked {
+    const TOPIC: &'static str = "my_mod.clicked";
+}
 
 struct MyMod {
     visible: bool,
     clicks: u32,
+    /// Kept while the mod runs: dropping it unsubscribes.
+    _on_click: Option<Subscription>,
 }
 
 impl Mod for MyMod {
@@ -21,7 +35,10 @@ impl Mod for MyMod {
             true
         });
 
-        MyMod { visible: true, clicks: 0 }
+        // Example subscription, the way another mod would listen. Events arrive at the start of the next frame.
+        let on_click = oxidizer_api::subscribe(|c: Clicked| log(&format!("my_mod: clicked {} times", c.count))).ok();
+
+        MyMod { visible: true, clicks: 0, _on_click: on_click }
     }
 
     /// Once the game has loaded its content and mods (init runs earlier, before the game's Main). Set up what
@@ -60,6 +77,7 @@ impl Mod for MyMod {
             imgui::text(&format!("time: {time:.1} s"));
             if imgui::button("Click me") {
                 self.clicks += 1;
+                let _ = oxidizer_api::publish(&Clicked { count: self.clicks });
             }
             imgui::same_line();
             imgui::text(&format!("clicks: {}", self.clicks));

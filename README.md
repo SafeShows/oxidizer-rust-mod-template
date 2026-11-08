@@ -26,7 +26,8 @@ The mod's id is its folder name in `mods/`, and here it is the package name in `
 `my_mod`, change these together:
 - `name` in `Cargo.toml`,
 - `name` and the `dll` path in `mod/mod.toml`,
-- `id` in `index-listing.example.toml`.
+- `id` in `index-listing.example.toml`,
+- the event topic `my_mod.clicked` in `src/lib.rs` (topics start with your mod's id).
 
 The install scripts and the release workflow read the id from `Cargo.toml`.
 
@@ -34,8 +35,10 @@ The install scripts and the release workflow read the id from `Cargo.toml`.
 
 ## Write the mod
 
-`src/lib.rs` implements `oxidizer_api::Mod`: `init`, `frame`, `gui`, `menu` and `unload`, all but `init` optional.
-The API (game objects, hooks and their return values, ImGui, keys, settings) is on
+`src/lib.rs` implements `oxidizer_api::Mod`: `init`, `loaded`, `frame`, `gui`, `menu` and `unload`, all but `init`
+optional. Its button also publishes a typed event other mods can subscribe to; see
+[Events and services](https://safeshows.github.io/Oxidizer/events/). The API (game objects, hooks and their
+return values, ImGui, keys, settings, events and services) is on
 [docs.rs](https://docs.rs/oxidizer_api); [Oxidizer's README](https://github.com/SafeShows/Oxidizer#rust) has an
 overview.
 
