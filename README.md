@@ -65,7 +65,7 @@ git tag v1.0.0
 git push origin v1.0.0
 ```
 The workflow builds the mod for Windows, Linux and macOS and publishes a release with `my_mod-1.0.0.zip`, holding a
-`my_mod/` folder with `mod.toml` and all three libraries in `bin/`, the layout mod managers install.
+`my_mod/` folder with `mod.toml`, all three libraries in `bin/`, and `THIRD-PARTY-NOTICES.txt` with the licenses of the crates compiled into them (`scripts/notices.py`; forum rules ask for that attribution), the layout mod managers install.
 
 ## List it in the content index
 
